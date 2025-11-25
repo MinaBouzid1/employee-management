@@ -1,0 +1,151 @@
+<div class="details-container fade-in-up">
+  <!-- Header avec navigation -->
+  <div class="details-header">
+    <button class="back-btn glow-effect" (click)="goBack()">
+      <span class="btn-icon">←</span>
+      Back to Team
+    </button>
+    <div class="header-actions">
+      <button class="edit-main-btn" (click)="editEmployee()">
+        <span class="btn-icon">✏️</span>
+        Edit Profile
+      </button>
+    </div>
+  </div>
+
+  <!-- Carte principale du profil -->
+  <div class="profile-card" *ngIf="employee">
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <div class="avatar-large">
+          {{ employee.firstName[0] }}{{ employee.lastName[0] }}
+        </div>
+        <div class="online-status"></div>
+      </div>
+      <div class="profile-info">
+        <h1 class="profile-name">{{ employee.firstName }} {{ employee.lastName }}</h1>
+        <p class="profile-role">🌟 Star Employee</p>
+        <div class="profile-stats">
+          <div class="stat">
+            <span class="stat-value">#{{ employee.id }}</span>
+            <span class="stat-label">Employee ID</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">Active</span>
+            <span class="stat-label">Status</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid d'informations -->
+    <div class="info-grid">
+      <!-- Carte Informations Personnelles -->
+      <div class="info-card personal-info">
+        <div class="card-header">
+          <span class="card-icon">👤</span>
+          <h3 class="card-title">Personal Information</h3>
+        </div>
+        <div class="card-content">
+          <div class="info-item">
+            <span class="info-label">Full Name</span>
+            <span class="info-value">{{ employee.firstName }} {{ employee.lastName }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Employee ID</span>
+            <span class="info-value badge">#{{ employee.id }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte Contact -->
+      <div class="info-card contact-info">
+        <div class="card-header">
+          <span class="card-icon">📧</span>
+          <h3 class="card-title">Contact Details</h3>
+        </div>
+        <div class="card-content">
+          <div class="info-item">
+            <span class="info-label">Email Address</span>
+            <span class="info-value">{{ employee.email }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Contact Status</span>
+            <span class="info-value badge active">Verified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte Salaire -->
+      <div class="info-card salary-info">
+        <div class="card-header">
+          <span class="card-icon">💰</span>
+          <h3 class="card-title">Compensation</h3>
+        </div>
+        <div class="card-content">
+          <div class="salary-display-large">
+            <span class="salary-amount">{{ employee.salary | currency:'USD' }}</span>
+            <span class="salary-period">/ year</span>
+          </div>
+          <div class="salary-breakdown">
+            <div class="breakdown-item">
+              <span class="breakdown-label">Monthly</span>
+              <span class="breakdown-value">{{ employee.salary / 12 | currency:'USD' }}</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-label">Weekly</span>
+              <span class="breakdown-value">{{ employee.salary / 52 | currency:'USD' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte Performance -->
+      <div class="info-card performance-info">
+        <div class="card-header">
+          <span class="card-icon">📊</span>
+          <h3 class="card-title">Performance Metrics</h3>
+        </div>
+        <div class="card-content">
+          <div class="metric">
+            <div class="metric-header">
+              <span class="metric-label">Productivity Score</span>
+              <span class="metric-value">94%</span>
+            </div>
+            <div class="metric-bar">
+              <div class="metric-progress" style="width: 94%"></div>
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-header">
+              <span class="metric-label">Team Contribution</span>
+              <span class="metric-value">88%</span>
+            </div>
+            <div class="metric-bar">
+              <div class="metric-progress" style="width: 88%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions rapides -->
+    <div class="quick-actions">
+      <button class="action-btn primary" (click)="editEmployee()">
+        <span class="action-icon">✏️</span>
+        Edit Profile
+      </button>
+      <button class="action-btn secondary" (click)="goBack()">
+        <span class="action-icon">←</span>
+        Back to List
+      </button>
+    </div>
+  </div>
+
+  <!-- État de chargement -->
+  <div *ngIf="!employee" class="loading-state">
+    <div class="loading-spinner"></div>
+    <h3 class="loading-text">Loading Employee Data...</h3>
+    <p class="loading-subtext">Preparing the superstar profile</p>
+  </div>
+</div>

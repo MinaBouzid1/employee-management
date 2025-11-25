@@ -1,0 +1,42 @@
+<!-- Navigation Bar Épique -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/employees">
+      <div class="brand-wrapper">
+        <div class="brand-icon">🚀</div>
+        <span class="brand-text">EmployeePro</span>
+      </div>
+    </a>
+
+    <div class="navbar-nav ms-auto">
+      <a class="nav-link nav-item" routerLink="/employees" routerLinkActive="active">
+        <i class="nav-icon">👥</i>
+        <span class="nav-text">Team Dashboard</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Background Animated -->
+<div class="background-animation">
+  <div class="floating-shape shape-1"></div>
+  <div class="floating-shape shape-2"></div>
+  <div class="floating-shape shape-3"></div>
+</div>
+
+<!-- Main Content -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- Footer Futuriste -->
+<footer class="custom-footer">
+  <div class="container-fluid">
+    <div class="footer-content">
+      <div class="footer-text">
+        🚀 Powered by Angular & Spring Boot | Employee Management System 2024
+      </div>
+      <div class="footer-glow"></div>
+    </div>
+  </div>
+</footer>

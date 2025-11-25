@@ -1,0 +1,122 @@
+<div class="employee-list-container fade-in-up">
+  <!-- Header Épique -->
+  <div class="list-header">
+    <div class="header-content">
+      <h1 class="page-title">👥 Team Dashboard</h1>
+      <p class="page-subtitle">Manage your workforce with style and efficiency</p>
+    </div>
+    <button class="add-btn glow-effect" (click)="addEmployee()">
+      <span class="btn-icon">✨</span>
+      Add New Star
+    </button>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ employees.length }}</h3>
+        <p class="stat-label">Total Employees</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">💰</div>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ getAverageSalary() | currency:'USD' }}</h3>
+        <p class="stat-label">Avg Salary</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table Époustouflante -->
+  <div class="table-container">
+    <div class="table-card">
+      <div class="table-header">
+        <h3 class="table-title">🌟 Team Members</h3>
+        <div class="table-actions">
+          <div class="search-box">
+            <input type="text" placeholder="Search stars..." class="search-input">
+            <span class="search-icon">🔍</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+          <tr>
+            <th class="table-header-cell">
+              <span>ID</span>
+            </th>
+            <th class="table-header-cell">
+              <span>Star Employee</span>
+            </th>
+            <th class="table-header-cell">
+              <span>Contact</span>
+            </th>
+            <th class="table-header-cell">
+              <span>Salary</span>
+            </th>
+            <th class="table-header-cell">
+              <span>Actions</span>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let employee of employees; let i = index"
+              class="table-row fade-in-up"
+              [style.animation-delay]="i * 0.1 + 's'">
+            <td class="table-cell">
+              <div class="employee-id">#{{ employee.id }}</div>
+            </td>
+            <td class="table-cell">
+              <div class="employee-info">
+                <div class="avatar">{{ employee.firstName[0] }}{{ employee.lastName[0] }}</div>
+                <div class="name-container">
+                  <div class="employee-name">{{ employee.firstName }} {{ employee.lastName }}</div>
+                  <div class="employee-role">Team Member</div>
+                </div>
+              </div>
+            </td>
+            <td class="table-cell">
+              <div class="contact-info">
+                <div class="email">{{ employee.email }}</div>
+              </div>
+            </td>
+            <td class="table-cell">
+              <div class="salary-display">
+                <span class="salary-amount">{{ employee.salary | currency:'USD' }}</span>
+                <div class="salary-badge">/year</div>
+              </div>
+            </td>
+            <td class="table-cell">
+              <div class="action-buttons">
+                <button class="action-btn view-btn" (click)="viewEmployee(employee.id!)" title="View Details">
+                  <span class="btn-icon">👁️</span>
+                </button>
+                <button class="action-btn edit-btn" (click)="editEmployee(employee.id!)" title="Edit">
+                  <span class="btn-icon">✏️</span>
+                </button>
+                <button class="action-btn delete-btn" (click)="deleteEmployee(employee.id!)" title="Delete">
+                  <span class="btn-icon">🗑️</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <!-- Empty State -->
+        <div *ngIf="employees.length === 0" class="empty-state">
+          <div class="empty-icon">🌌</div>
+          <h3 class="empty-title">No Stars Yet</h3>
+          <p class="empty-description">Your team is waiting for its first superstar!</p>
+          <button class="empty-btn glow-effect" (click)="addEmployee()">
+            Add First Employee
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
