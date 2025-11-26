@@ -175,5 +175,5 @@ export const environment = {
 
 ---
 
-⭐ **N'oubliez pas de mettre une étoile si ce projet vous a aidé !** ⭐
+
 
